@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentalgy OS - La inteligencia que dirige tu clínica</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            background-color: #F5F5F5;
+            color: #333;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #2C2C2C;
+            letter-spacing: -0.02em;
+        }
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-menu a {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            text-decoration: none;
+            margin: 0 20px;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-menu a:hover {
+            color: #2C2C2C;
+            opacity: 0.8;
+        }
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2C2C2C;
+            transition: width 0.3s ease;
+        }
+        .navbar-menu a:hover::after {
+            width: 100%;
+        }
+        .navbar-cta {
+            background: #2C2C2C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 300;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            margin-left: 10px;
+        }
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(44,44,44,0.2);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #2C2C2C;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            background-color: #F5F5F5;
+            padding-top: 80px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #2C2C2C;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 200;
+            margin-bottom: 60px;
+            color: #555;
+            line-height: 1.6;
+            letter-spacing: 0.04em;
+        }
+        .hero-ctas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+        .cta-primary {
+            background: #2C2C2C;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 300;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44,44,44,0.2);
+            letter-spacing: 0.05em;
+        }
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44,44,44,0.3);
+        }
+        .cta-secondary {
+            background: transparent;
+            color: #2C2C2C;
+            border: 1px solid #2C2C2C;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 300;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+        }
+        .cta-secondary:hover {
+            background: #2C2C2C;
+            color: white;
+        }
+        .ada-bubble {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            padding: 15px 25px;
+            box-shadow: 0 5px 20px rgba(44,44,44,0.1);
+            font-size: 1rem;
+            color: #2C2C2C;
+            font-weight: 300;
+            max-width: 400px;
+            margin: 0 auto;
+            animation: float 6s infinite ease-in-out;
+            letter-spacing: 0.02em;
+        }
+        .ada-bubble:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent white;
+        }
+        /* Section 2 */
+        .section-2 {
+            padding: 120px 0;
+            background-color: #E8E8E8;
+        }
+        .section-2-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .section-2-text {
+            padding-right: 60px;
+        }
+        .section-2-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .section-2-description {
+            font-size: 1.2rem;
+            font-weight: 200;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        .section-2-list {
+            list-style-type: none;
+        }
+        .section-2-list li {
+            font-size: 1.2rem;
+            font-weight: 200;
+            color: #555;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.02em;
+        }
+        .section-2-list li:before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #2C2C2C;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .section-2-visual {
+            position: relative;
+            height: 400px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(44,44,44,0.1);
+            overflow: hidden;
+        }
+        .layer {
+            position: absolute;
+            width: 100%;
+            padding: 25px;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        .layer:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(44,44,44,0.1);
+        }
+        .layer-1 {
+            height: 33.33%;
+            top: 0;
+            background: linear-gradient(to right, rgba(44,44,44,0.08), rgba(44,44,44,0.02));
+            border-bottom: 1px solid rgba(44,44,44,0.05);
+        }
+        .layer-2 {
+            height: 33.33%;
+            top: 33.33%;
+            background: linear-gradient(to right, rgba(100,100,100,0.08), rgba(100,100,100,0.02));
+            border-bottom: 1px solid rgba(44,44,44,0.05);
+        }
+        .layer-3 {
+            height: 33.33%;
+            top: 66.66%;
+            background: linear-gradient(to right, rgba(150,150,150,0.08), rgba(150,150,150,0.02));
+        }
+        .layer-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.02em;
+        }
+        .layer-title .material-icons {
+            margin-right: 15px;
+            color: #2C2C2C;
+            font-weight: 300;
+        }
+        .layer-content {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            letter-spacing: 0.02em;
+        }
+        /* Section 3 */
+        .section-3 {
+            padding: 120px 0;
+            background-color: white;
+            position: relative;
+        }
+        .section-3-content {
+            text-align: center;
+        }
+        .section-3-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .section-3-description {
+            font-size: 1.3rem;
+            font-weight: 200;
+            color: #555;
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        .ada-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .ada-feature {
+            background: #F5F5F5;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(44,44,44,0.05);
+            transition: all 0.3s ease;
+        }
+        .ada-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(44,44,44,0.1);
+        }
+        .ada-feature-icon {
+            font-size: 2.5rem;
+            color: #2C2C2C;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        .ada-feature-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+        .ada-feature-description {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        .ada-examples {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .ada-example {
+            background: white;
+            border: 1px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(44,44,44,0.05);
+        }
+        .ada-example:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+        }
+        .ada-example:after {
+            content: '';
+            position: absolute;
+            top: -11px;
+            left: 25px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #E0E0E0;
+        }
+        .ada-example-content {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        /* Section 4 */
+        .section-4 {
+            padding: 120px 0;
+            background-color: #F5F5F5;
+        }
+        .section-4-content {
+            text-align: center;
+        }
+        .section-4-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 80px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .module-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(44,44,44,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(44,44,44,0.1);
+        }
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            background: rgba(44,44,44,0.05);
+        }
+        .module-icon .material-icons {
+            font-size: 30px;
+            color: #2C2C2C;
+            font-weight: 300;
+        }
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            letter-spacing: 0.02em;
+        }
+        .module-description {
+            font-size: 0.9rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        .section-4-footer {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 200;
+            color: #555;
+            margin-top: 60px;
+            letter-spacing: 0.05em;
+        }
+        /* === REDISEÑO SECCIÓN 5 === */
+        .section-5 {
+            padding: 140px 0;
+            background-color: #E8E8E8;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-5-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .section-5-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 80px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        /* Modern Flow Timeline */
+        .flow-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Vertical line for mobile */
+        .flow-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #2C2C2C, #666);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-badge {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(44,44,44,0.15);
+            margin-bottom: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flow-badge:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 12px 30px rgba(44,44,44,0.25);
+        }
+
+        .flow-badge .material-icons {
+            font-size: 38px;
+            color: #2C2C2C;
+            font-weight: 300;
+        }
+
+        .flow-content {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(44,44,44,0.08);
+            max-width: 500px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover .flow-content {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(44,44,44,0.15);
+        }
+
+        .flow-title {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        .flow-description {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+        }
+
+        /* Desktop diagonal layout */
+        @media (min-width: 769px) {
+            .flow-timeline {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 0;
+                margin: 0 auto;
+                max-width: 1200px;
+            }
+            .flow-line {
+                display: none;
+            }
+            .flow-step {
+                width: calc(50% - 40px);
+                margin-bottom: 60px;
+                align-items: flex-start;
+            }
+            .flow-step:nth-child(odd) {
+                align-items: flex-start;
+                transform: translateY(0);
+            }
+            .flow-step:nth-child(even) {
+                align-items: flex-end;
+                transform: translateY(40px);
+            }
+            .flow-badge {
+                margin-bottom: 20px;
+            }
+            .flow-content {
+                text-align: left;
+                max-width: 100%;
+            }
+            .flow-step:nth-child(even) .flow-content {
+                text-align: right;
+            }
+        }
+
+        /* Section 6 */
+        .section-6 {
+            padding: 120px 0;
+            background-color: #2C2C2C;
+            color: white;
+        }
+        .section-6-content {
+            text-align: center;
+        }
+        .section-6-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 80px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .differences {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .difference {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .difference-text {
+            font-size: 1.5rem;
+            font-weight: 200;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+        }
+        .difference-highlight {
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+        }
+        .section-6-cta {
+            background: white;
+            color: #2C2C2C;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 300;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+            letter-spacing: 0.05em;
+        }
+        .section-6-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+        }
+        /* Section 7 */
+        .section-7 {
+            padding: 120px 0;
+            background-color: white;
+        }
+        .section-7-content {
+            text-align: center;
+        }
+        .section-7-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 80px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .metric {
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 200;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+        .metric-label {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+        }
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .testimonial {
+            background: #F5F5F5;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(44,44,44,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(44,44,44,0.1);
+        }
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #E0E0E0;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .testimonial-avatar .material-icons {
+            font-size: 30px;
+            color: #555;
+            font-weight: 300;
+        }
+        .testimonial-info {
+            text-align: left;
+        }
+        .testimonial-name {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+        .testimonial-role {
+            font-size: 0.9rem;
+            font-weight: 200;
+            color: #555;
+            letter-spacing: 0.02em;
+        }
+        .testimonial-content {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.7;
+            flex-grow: 1;
+            letter-spacing: 0.02em;
+        }
+        /* Section 8 */
+        .section-8 {
+            padding: 120px 0;
+            background-color: #F5F5F5;
+            text-align: center;
+        }
+        .section-8-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section-8-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 60px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .demo-button {
+            background: #2C2C2C;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44,44,44,0.2);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.05em;
+        }
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44,44,44,0.3);
+        }
+        .demo-button:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100,100,100,0.4) 0%, rgba(100,100,100,0) 70%);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        .demo-examples {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        .demo-example {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 30px;
+            box-shadow: 0 5px 15px rgba(44,44,44,0.05);
+            max-width: 600px;
+            text-align: left;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .demo-example:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+        }
+        .demo-example:after {
+            content: '';
+            position: absolute;
+            top: -11px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #E0E0E0;
+        }
+        .demo-example-icon {
+            margin-right: 20px;
+            color: #2C2C2C;
+            font-weight: 300;
+        }
+        .demo-example-text {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        /* Section 9 */
+        .section-9 {
+            padding: 120px 0;
+            background-color: white;
+        }
+        .section-9-content {
+            text-align: center;
+        }
+        .section-9-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 80px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .pricing-card {
+            background: #F5F5F5;
+            border-radius: 16px;
+            padding: 50px 30px;
+            box-shadow: 0 5px 15px rgba(44,44,44,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(44,44,44,0.1);
+        }
+        .pricing-card.featured {
+            background: #2C2C2C;
+            color: white;
+            transform: scale(1.05);
+        }
+        .pricing-card.featured .pricing-title,
+        .pricing-card.featured .pricing-description,
+        .pricing-card.featured .pricing-features li {
+            color: white;
+        }
+        .pricing-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 25px;
+            letter-spacing: 0.02em;
+        }
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+        .pricing-card.featured .pricing-price {
+            color: white;
+        }
+        .pricing-period {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            margin-bottom: 40px;
+            letter-spacing: 0.02em;
+        }
+        .pricing-card.featured .pricing-period {
+            color: rgba(255,255,255,0.8);
+        }
+        .pricing-description {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        .pricing-features {
+            list-style-type: none;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        .pricing-features li {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #555;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            letter-spacing: 0.02em;
+        }
+        .pricing-features li .material-icons {
+            margin-right: 15px;
+            font-size: 20px;
+            color: #2C2C2C;
+            font-weight: 300;
+        }
+        .pricing-card.featured .pricing-features li .material-icons {
+            color: white;
+        }
+        .pricing-cta {
+            background: #2C2C2C;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: 300;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44,44,44,0.2);
+            width: 100%;
+            letter-spacing: 0.05em;
+        }
+        .pricing-card.featured .pricing-cta {
+            background: white;
+            color: #2C2C2C;
+        }
+        .pricing-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44,44,44,0.3);
+        }
+        /* Section 10 */
+        .section-10 {
+            padding: 120px 0;
+            background-color: #F5F5F5;
+            text-align: center;
+        }
+        .section-10-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section-10-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #2C2C2C;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .section-10-subtitle {
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: #555;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .hero {
+                padding-top: 100px;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-2-content {
+                grid-template-columns: 1fr;
+            }
+            .section-2-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            .ada-features {
+                grid-template-columns: 1fr;
+            }
+            .ada-examples {
+                grid-template-columns: 1fr;
+            }
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .differences {
+                grid-template-columns: 1fr;
+            }
+            .metrics-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+        @media (max-width: 480px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .section-5 {
+                padding: 100px 0 120px;
+            }
+            .flow-step {
+                width: 100%;
+                align-items: center !important;
+            }
+            .flow-step:nth-child(even) {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-logo">Dentalgy OS</div>
+            <div class="navbar-menu">
+                <a href="#section-2">Qué es</a>
+                <a href="#section-3">ADA</a>
+                <a href="#section-4">Módulos</a>
+                <a href="#section-5">Cómo funciona</a>
+                <a href="#section-7">Resultados</a>
+                <a href="#section-9">Planes</a>
+                <button class="navbar-cta">Pruébalo ahora</button>
+            </div>
+            <button class="mobile-menu-toggle">
+                <span class="material-icons">menu</span>
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Dentalgy OS</h1>
+            <h2 class="hero-subtitle">La inteligencia que dirige tu clínica de principio a fin.</h2>
+            <div class="hero-ctas">
+                <button class="cta-primary">Pruébalo ahora</button>
+                <button class="cta-secondary">Ver cómo funciona</button>
+            </div>
+            <div class="ada-bubble">
+                "Puedo mostrarte cómo mejorar tu clínica en menos de 30 segundos."
+            </div>
+        </div>
+    </section>
+    <!-- Section 2 -->
+    <section class="section-2" id="section-2">
+        <div class="container">
+            <div class="section-2-content">
+                <div class="section-2-text">
+                    <h2 class="section-2-title">La clínica moderna necesita inteligencia, no más software.</h2>
+                    <p class="section-2-description">Dentalgy OS integra personas, datos y procesos en un único cerebro operativo.</p>
+                    <ul class="section-2-list">
+                        <li>No añade carga: elimina fricción.</li>
+                        <li>No complica: ordena.</li>
+                        <li>No gestiona: dirige.</li>
+                    </ul>
+                </div>
+                <div class="section-2-visual">
+                    <div class="layer layer-1">
+                        <h3 class="layer-title">
+                            <span class="material-icons">settings</span>
+                            Operación
+                        </h3>
+                        <p class="layer-content">Control total de inventario, indicadores clave y comparativas sectoriales.</p>
+                    </div>
+                    <div class="layer layer-2">
+                        <h3 class="layer-title">
+                            <span class="material-icons">people</span>
+                            Personas
+                        </h3>
+                        <p class="layer-content">Organización de roles, protocolos y cultura clínica.</p>
+                    </div>
+                    <div class="layer layer-3">
+                        <h3 class="layer-title">
+                            <span class="material-icons">person</span>
+                            Paciente
+                        </h3>
+                        <p class="layer-content">Onboarding perfecto, cierre optimizado e hiperpersonalización.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 3 -->
+    <section class="section-3" id="section-3">
+        <div class="container">
+            <div class="section-3-content">
+                <h2 class="section-3-title">ADA, tu asistente dental avanzado.</h2>
+                <p class="section-3-description">ADA coordina, predice, recuerda, analiza y guía. Es la inteligencia que mantiene la clínica en movimiento, sin errores y sin improvisación.</p>
+                <div class="ada-features">
+                    <div class="ada-feature">
+                        <div class="ada-feature-icon">
+                            <span class="material-icons">lightbulb</span>
+                        </div>
+                        <h3 class="ada-feature-title">Sabe qué hacer</h3>
+                        <p class="ada-feature-description">Analiza el contexto y determina las acciones prioritarias para cada situación.</p>
+                    </div>
+                    <div class="ada-feature">
+                        <div class="ada-feature-icon">
+                            <span class="material-icons">route</span>
+                        </div>
+                        <h3 class="ada-feature-title">Sabe cómo hacerlo</h3>
+                        <p class="ada-feature-description">Proporciona pasos claros y específicos sin ambigüedades ni improvisación.</p>
+                    </div>
+                    <div class="ada-feature">
+                        <div class="ada-feature-icon">
+                            <span class="material-icons">schedule</span>
+                        </div>
+                        <h3 class="ada-feature-title">Sabe cuándo hacerlo</h3>
+                        <p class="ada-feature-description">Envía alertas y recordatorios en el momento exacto para máxima efectividad.</p>
+                    </div>
+                </div>
+                <div class="ada-examples">
+                    <div class="ada-example">
+                        <p class="ada-example-content">"El Box 2 está generando espera. Te sugiero reorganizar el flujo."</p>
+                    </div>
+                    <div class="ada-example">
+                        <p class="ada-example-content">"Hay tres caducidades críticas esta semana."</p>
+                    </div>
+                    <div class="ada-example">
+                        <p class="ada-example-content">"Paciente Marta suele ponerse nerviosa: ajusta el tono de explicación."</p>
+                    </div>
+                    <div class="ada-example">
+                        <p class="ada-example-content">"La aceptación de presupuestos bajó este mes; revisemos el argumentario."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 4 -->
+    <section class="section-4" id="section-4">
+        <div class="container">
+            <div class="section-4-content">
+                <h2 class="section-4-title">Los 8 módulos del ecosistema</h2>
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">inventory_2</span>
+                        </div>
+                        <h3 class="module-title">Exactia</h3>
+                        <p class="module-description">Control total de inventario</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">analytics</span>
+                        </div>
+                        <h3 class="module-title">KPI Master</h3>
+                        <p class="module-description">Los indicadores que importan de verdad</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">compare_arrows</span>
+                        </div>
+                        <h3 class="module-title">Benchmark 360</h3>
+                        <p class="module-description">Comparativa sectorial real</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">groups</span>
+                        </div>
+                        <h3 class="module-title">People & Culture</h3>
+                        <p class="module-description">El sistema operativo humano</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">smart_toy</span>
+                        </div>
+                        <h3 class="module-title">ADA</h3>
+                        <p class="module-description">Inteligencia operativa</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">assignment</span>
+                        </div>
+                        <h3 class="module-title">FitPatient</h3>
+                        <p class="module-description">Onboarding clínico perfecto</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">hearing</span>
+                        </div>
+                        <h3 class="module-title">Sales Examiner</h3>
+                        <p class="module-description">Aceptación de tratamientos optimizada</p>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <span class="material-icons">sentiment_satisfied_alt</span>
+                        </div>
+                        <h3 class="module-title">Patient Experience Engine</h3>
+                        <p class="module-description">Hiperpersonalización real</p>
+                    </div>
+                </div>
+                <div class="section-4-footer">
+                    Todos conectados. Todos orquestados por ADA.
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- === REDISEÑO SECCIÓN 5 === -->
+    <section class="section-5" id="section-5">
+        <div class="container">
+            <div class="section-5-content">
+                <h2 class="section-5-title">De datos a decisiones. De decisiones a resultados.</h2>
+                <div class="flow-timeline">
+                    <div class="flow-step">
+                        <div class="flow-badge">
+                            <span class="material-icons">search</span>
+                        </div>
+                        <div class="flow-content">
+                            <h3 class="flow-title">Detecta</h3>
+                            <p class="flow-description">ADA analiza caducidades, tiempos, comportamientos y tendencias ocultas en tiempo real.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-badge">
+                            <span class="material-icons">sort</span>
+                        </div>
+                        <div class="flow-content">
+                            <h3 class="flow-title">Prioriza</h3>
+                            <p class="flow-description">Ordena las acciones por impacto y urgencia, asignando foco al equipo en lo que realmente importa.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-badge">
+                            <span class="material-icons">lightbulb</span>
+                        </div>
+                        <div class="flow-content">
+                            <h3 class="flow-title">Recomienda</h3>
+                            <p class="flow-description">Propone soluciones claras y contextualizadas, sin ambigüedades ni improvisación.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-badge">
+                            <span class="material-icons">play_arrow</span>
+                        </div>
+                        <div class="flow-content">
+                            <h3 class="flow-title">Ejecuta</h3>
+                            <p class="flow-description">Genera checklists dinámicos y coordina tareas entre el equipo clínico y administrativo.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-badge">
+                            <span class="material-icons">assessment</span>
+                        </div>
+                        <div class="flow-content">
+                            <h3 class="flow-title">Mide</h3>
+                            <p class="flow-description">Monitorea KPIs clave en tiempo real y ajusta las metas automáticamente.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-badge">
+                            <span class="material-icons">autorenew</span>
+                        </div>
+                        <div class="flow-content">
+                            <h3 class="flow-title">Optimiza</h3>
+                            <p class="flow-description">Aprende de cada ciclo y mejora continuamente los procesos y protocolos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 6 -->
+    <section class="section-6" id="section-6">
+        <div class="container">
+            <div class="section-6-content">
+                <h2 class="section-6-title">¿Por qué Dentalgy OS no es otro software más?</h2>
+                <div class="differences">
+                    <div class="difference">
+                        <p class="difference-text">Porque no automatiza tareas.</p>
+                        <p class="difference-highlight">Orquesta la operación.</p>
+                    </div>
+                    <div class="difference">
+                        <p class="difference-text">Porque no organiza pantallas.</p>
+                        <p class="difference-highlight">Organiza la clínica.</p>
+                    </div>
+                    <div class="difference">
+                        <p class="difference-text">Porque no recopila datos.</p>
+                        <p class="difference-highlight">Los convierte en decisiones.</p>
+                    </div>
+                    <div class="difference">
+                        <p class="difference-text">Porque no ejecuta órdenes.</p>
+                        <p class="difference-highlight">Ejecuta propósito.</p>
+                    </div>
+                </div>
+                <button class="section-6-cta">Descubre el impacto real en 30 días</button>
+            </div>
+        </div>
+    </section>
+    <!-- Section 7 -->
+    <section class="section-7" id="section-7">
+        <div class="container">
+            <div class="section-7-content">
+                <h2 class="section-7-title">Resultados reales en clínicas como la tuya</h2>
+                <div class="metrics-container">
+                    <div class="metric">
+                        <div class="metric-value">-27%</div>
+                        <div class="metric-label">gasto en inventario</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+34%</div>
+                        <div class="metric-label">aceptación de tratamientos</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-42%</div>
+                        <div class="metric-label">errores operativos</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+19%</div>
+                        <div class="metric-label">satisfacción del paciente</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-31%</div>
+                        <div class="metric-label">tiempos muertos por box</div>
+                    </div>
+                </div>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <span class="material-icons">person</span>
+                            </div>
+                            <div class="testimonial-info">
+                                <h3 class="testimonial-name">Dra. Laura Martínez</h3>
+                                <p class="testimonial-role">Directora Clínica, Sonrisa Perfecta</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-content">"Dentalgy OS ha transformado completamente nuestra forma de trabajar. ADA anticipa problemas antes de que ocurran y nuestro equipo opera como una máquina bien engrasada. La reducción en errores ha sido espectacular."</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <span class="material-icons">person</span>
+                            </div>
+                            <div class="testimonial-info">
+                                <h3 class="testimonial-name">Dr. Carlos Pérez</h3>
+                                <p class="testimonial-role">Propietario, Clínica Dental Integral</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-content">"Lo que más me impresiona es cómo ADA personaliza la experiencia de cada paciente. Hemos mejorado la aceptación de tratamientos en más de un 30% y los comentarios de los pacientes son excelentes."</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <span class="material-icons">person</span>
+                            </div>
+                            <div class="testimonial-info">
+                                <h3 class="testimonial-name">Ana Rodríguez</h3>
+                                <p class="testimonial-role">Administradora, Dental Center</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-content">"El control de inventario con Exactia es increíble. Hemos reducido el gasto en materiales casi un 30% sin afectar la calidad. ADA nos avisa antes de que falte algo o caduque."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 8 -->
+    <section class="section-8" id="section-8">
+        <div class="container">
+            <div class="section-8-content">
+                <h2 class="section-8-title">Experimenta el poder de ADA ahora mismo</h2>
+                <button class="demo-button">Probar ADA ahora</button>
+                <div class="demo-examples">
+                    <div class="demo-example">
+                        <span class="material-icons demo-example-icon">chat</span>
+                        <p class="demo-example-text">"Pregúntame cómo optimizar tu inventario."</p>
+                    </div>
+                    <div class="demo-example">
+                        <span class="material-icons demo-example-icon">chat</span>
+                        <p class="demo-example-text">"Puedo ayudarte a mejorar el cierre comercial."</p>
+                    </div>
+                    <div class="demo-example">
+                        <span class="material-icons demo-example-icon">chat</span>
+                        <p class="demo-example-text">"¿Quieres descubrir el KPI más crítico de tu clínica?"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 9 -->
+    <section class="section-9" id="section-9">
+        <div class="container">
+            <div class="section-9-content">
+                <h2 class="section-9-title">Elige el plan perfecto para tu clínica</h2>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Dentalgy OS Core</h3>
+                        <div class="pricing-price">€149</div>
+                        <div class="pricing-period">al mes</div>
+                        <p class="pricing-description">Funcionalidades esenciales para clínicas pequeñas y medianas.</p>
+                        <ul class="pricing-features">
+                            <li><span class="material-icons">check_circle</span> Exactia (Inventario básico)</li>
+                            <li><span class="material-icons">check_circle</span> KPI Master (Indicadores esenciales)</li>
+                            <li><span class="material-icons">check_circle</span> ADA (Asistente básico)</li>
+                            <li><span class="material-icons">check_circle</span> FitPatient (Digitalización de pacientes)</li>
+                            <li><span class="material-icons">check_circle</span> Soporte por email</li>
+                        </ul>
+                        <button class="pricing-cta">Probar ahora</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="pricing-title">Dentalgy OS Pro</h3>
+                        <div class="pricing-price">€299</div>
+                        <div class="pricing-period">al mes</div>
+                        <p class="pricing-description">Funcionalidades avanzadas para clínicas en crecimiento.</p>
+                        <ul class="pricing-features">
+                            <li><span class="material-icons">check_circle</span> Todo en Core</li>
+                            <li><span class="material-icons">check_circle</span> Benchmark 360 (Comparativas sectoriales)</li>
+                            <li><span class="material-icons">check_circle</span> People & Culture (Gestión de equipos)</li>
+                            <li><span class="material-icons">check_circle</span> ADA (Asistente avanzado)</li>
+                            <li><span class="material-icons">check_circle</span> Sales Examiner (Análisis de ventas)</li>
+                            <li><span class="material-icons">check_circle</span> Soporte prioritario</li>
+                        </ul>
+                        <button class="pricing-cta">Solicitar demo</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Dentalgy OS Full</h3>
+                        <div class="pricing-price">€499</div>
+                        <div class="pricing-period">al mes</div>
+                        <p class="pricing-description">Suite completa para clínicas con múltiples sedes.</p>
+                        <ul class="pricing-features">
+                            <li><span class="material-icons">check_circle</span> Todo en Pro</li>
+                            <li><span class="material-icons">check_circle</span> Patient Experience Engine (Personalización)</li>
+                            <li><span class="material-icons">check_circle</span> ADA (Inteligencia predictiva)</li>
+                            <li><span class="material-icons">check_circle</span> API completa</li>
+                            <li><span class="material-icons">check_circle</span> Integraciones personalizadas</li>
+                            <li><span class="material-icons">check_circle</span> Gestión multi-sede</li>
+                        </ul>
+                        <button class="pricing-cta">Hablar con un experto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 10 -->
+    <section class="section-10" id="section-10">
+        <div class="container">
+            <div class="section-10-content">
+                <h2 class="section-10-title">Dentalgy OS</h2>
+                <p class="section-10-subtitle">La clínica del futuro no se gestiona. Se dirige.</p>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        mobileMenuToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
