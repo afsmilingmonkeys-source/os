@@ -460,6 +460,7 @@
             display: flex;
             justify-content: center;
             margin: 40px 0;
+            width: 100%;
         }
 
         .satellite-row {
@@ -522,24 +523,36 @@
             letter-spacing: 0.05em;
         }
         
-        /* Estilos ADA como cohesionador */
+        /* Estilos ADA como cohesionador - Versión más ancha y menos alta */
         .ada-module {
             background: #2C2C2C;
             color: white;
-            transform: scale(1.1);
-            max-width: 400px;
+            transform: scale(1.02);
+            width: 100%;
+            max-width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
         }
         .ada-module .module-icon {
             background: rgba(255,255,255,0.1);
+            margin-bottom: 0;
+            flex-shrink: 0;
         }
         .ada-module .module-icon .material-icons {
             color: white;
         }
         .ada-module .module-title {
             color: white;
+            margin-bottom: 5px;
+            font-size: 1.4rem;
         }
         .ada-module .module-description {
             color: rgba(255,255,255,0.8);
+            margin-bottom: 0;
         }
         
         /* Servicios satélite */
@@ -1190,6 +1203,11 @@
             .satellite-row {
                 grid-template-columns: 1fr;
             }
+            .ada-module {
+                flex-direction: column;
+                padding: 30px;
+                gap: 15px;
+            }
             .differences {
                 grid-template-columns: 1fr;
             }
@@ -1390,8 +1408,10 @@
                         <div class="module-icon">
                             <span class="material-icons">smart_toy</span>
                         </div>
-                        <h3 class="module-title">ADA</h3>
-                        <p class="module-description">El cerebro que conecta y optimiza todo el ecosistema</p>
+                        <div>
+                            <h3 class="module-title">ADA</h3>
+                            <p class="module-description">El cerebro que conecta y optimiza todo el ecosistema</p>
+                        </div>
                     </div>
                 </div>
                 
