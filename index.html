@@ -430,7 +430,7 @@
             line-height: 1.7;
             letter-spacing: 0.02em;
         }
-        /* Section 4 */
+        /* Section 4 - Rediseñado con estructura de 3 filas */
         .section-4 {
             padding: 120px 0;
             background-color: #F5F5F5;
@@ -447,12 +447,27 @@
             line-height: 1.2;
             letter-spacing: -0.02em;
         }
-        .modules-grid {
+        
+        /* Estructura de filas para el ecosistema */
+        .modules-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
+
+        .ada-connector-row {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .satellite-row {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         .module-card {
             background: white;
             border-radius: 16px;
@@ -463,6 +478,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
         }
         .module-card:hover {
             transform: translateY(-5px);
@@ -505,6 +521,60 @@
             margin-top: 60px;
             letter-spacing: 0.05em;
         }
+        
+        /* Estilos ADA como cohesionador */
+        .ada-module {
+            background: #2C2C2C;
+            color: white;
+            transform: scale(1.1);
+            max-width: 400px;
+        }
+        .ada-module .module-icon {
+            background: rgba(255,255,255,0.1);
+        }
+        .ada-module .module-icon .material-icons {
+            color: white;
+        }
+        .ada-module .module-title {
+            color: white;
+        }
+        .ada-module .module-description {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* Servicios satélite */
+        .satellite-module {
+            opacity: 0.85;
+            border: 1px dashed rgba(44,44,44,0.2);
+        }
+        .satellite-module:hover {
+            opacity: 1;
+            border-color: rgba(44,44,44,0.4);
+        }
+        
+        .upsell-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #2C2C2C;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            box-shadow: 0 2px 8px rgba(44,44,44,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .satellite-module:hover .upsell-indicator {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(44,44,44,0.3);
+        }
+        
         /* === REDISEÑO SECCIÓN 5 === */
         .section-5 {
             padding: 140px 0;
@@ -691,14 +761,13 @@
             line-height: 1.5;
             letter-spacing: 0.02em;
         }
-       .difference-highlight {
-    font-size: 1.5rem;
-    font-weight: 100;
-    line-height: 1.5;
-    letter-spacing: 0.05em;
-    color: #FFFFFF;
-    margin-top: 10px;
-}
+        .difference-highlight {
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            margin-top: 10px;
         }
         .section-6-cta {
             background: white;
@@ -1115,8 +1184,11 @@
             .ada-examples {
                 grid-template-columns: 1fr;
             }
-            .modules-grid {
+            .modules-row {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .satellite-row {
+                grid-template-columns: 1fr;
             }
             .differences {
                 grid-template-columns: 1fr;
@@ -1135,7 +1207,7 @@
             }
         }
         @media (max-width: 480px) {
-            .modules-grid {
+            .modules-row {
                 grid-template-columns: 1fr;
             }
             .metrics-container {
@@ -1274,12 +1346,14 @@
             </div>
         </div>
     </section>
-    <!-- Section 4 -->
+    <!-- Section 4 - Rediseñado con estructura de 3 filas -->
     <section class="section-4" id="section-4">
         <div class="container">
             <div class="section-4-content">
-                <h2 class="section-4-title">Los 8 módulos del ecosistema</h2>
-                <div class="modules-grid">
+                <h2 class="section-4-title">El ecosistema perfecto</h2>
+                
+                <!-- Primera fila: Módulos principales -->
+                <div class="modules-row">
                     <div class="module-card">
                         <div class="module-icon">
                             <span class="material-icons">inventory_2</span>
@@ -1296,31 +1370,10 @@
                     </div>
                     <div class="module-card">
                         <div class="module-icon">
-                            <span class="material-icons">compare_arrows</span>
-                        </div>
-                        <h3 class="module-title">Benchmark 360</h3>
-                        <p class="module-description">Comparativa sectorial real</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon">
                             <span class="material-icons">groups</span>
                         </div>
                         <h3 class="module-title">People & Culture</h3>
                         <p class="module-description">El sistema operativo humano</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon">
-                            <span class="material-icons">smart_toy</span>
-                        </div>
-                        <h3 class="module-title">ADA</h3>
-                        <p class="module-description">Inteligencia operativa</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon">
-                            <span class="material-icons">assignment</span>
-                        </div>
-                        <h3 class="module-title">FitPatient</h3>
-                        <p class="module-description">Onboarding clínico perfecto</p>
                     </div>
                     <div class="module-card">
                         <div class="module-icon">
@@ -1329,16 +1382,49 @@
                         <h3 class="module-title">Sales Examiner</h3>
                         <p class="module-description">Aceptación de tratamientos optimizada</p>
                     </div>
-                    <div class="module-card">
+                </div>
+                
+                <!-- Segunda fila: ADA como cohesionador -->
+                <div class="ada-connector-row">
+                    <div class="module-card ada-module">
+                        <div class="module-icon">
+                            <span class="material-icons">smart_toy</span>
+                        </div>
+                        <h3 class="module-title">ADA</h3>
+                        <p class="module-description">El cerebro que conecta y optimiza todo el ecosistema</p>
+                    </div>
+                </div>
+                
+                <!-- Tercera fila: Servicios complementarios -->
+                <div class="modules-row satellite-row">
+                    <div class="module-card satellite-module">
+                        <div class="module-icon">
+                            <span class="material-icons">assignment</span>
+                        </div>
+                        <h3 class="module-title">FitPatient</h3>
+                        <p class="module-description">Onboarding clínico perfecto</p>
+                        <span class="upsell-indicator">+Plus</span>
+                    </div>
+                    <div class="module-card satellite-module">
+                        <div class="module-icon">
+                            <span class="material-icons">compare_arrows</span>
+                        </div>
+                        <h3 class="module-title">Benchmark 360</h3>
+                        <p class="module-description">Comparativa sectorial real</p>
+                        <span class="upsell-indicator">+Plus</span>
+                    </div>
+                    <div class="module-card satellite-module">
                         <div class="module-icon">
                             <span class="material-icons">sentiment_satisfied_alt</span>
                         </div>
                         <h3 class="module-title">Patient Experience Engine</h3>
                         <p class="module-description">Hiperpersonalización real</p>
+                        <span class="upsell-indicator">+Plus</span>
                     </div>
                 </div>
+                
                 <div class="section-4-footer">
-                    Todos conectados. Todos orquestados por ADA.
+                    Un ecosistema inteligente donde ADA conecta y optimiza cada módulo.
                 </div>
             </div>
         </div>
